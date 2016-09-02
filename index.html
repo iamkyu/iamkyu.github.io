@@ -1,9 +1,9 @@
 ---
 layout: home
 title: BLOG
-description: "The personal blog of Hossain Mohd. Faysal, a doctoral candidate in Electrical Engineering at University of Pennsylvania."
-headline: An Engineer's Diary
-tags: [Hossain, Mohd, Faysal, electrical, engineering, blog, university, pennsylvania, doha, Qatar]
+description: "The personal blog of Kj Nam."
+headline: Dev Note
+tags: [engineering, blog]
 ---
 {% if site.paginate %}
 	{% for post in paginator.posts %}
@@ -29,7 +29,7 @@ tags: [Hossain, Mohd, Faysal, electrical, engineering, blog, university, pennsyl
                 </h3>
             </header>
             <section class="summer-post-excerpt">
-                <p>{{ post.content | strip_html | truncatewords:40 }}</p>
+                <!-- <p>{{ post.content | strip_html | truncatewords:40 }}</p> -->
             </section>
             
                 <div class="summer-index-post-tags">
@@ -43,20 +43,20 @@ tags: [Hossain, Mohd, Faysal, electrical, engineering, blog, university, pennsyl
     <nav class="pagination" role="navigation">
     {% if paginator.previous_page %}
 	    {% if paginator.previous_page == 1 %}
-	    <a class="newer-posts" href="{{ site.url }}"><i class="fa fa-chevron-left"></i> Newer</a>
+	    <a class="newer-posts" href="{{ site.url }}"><i class="fa fa-chevron-left"></i> 이전</a>
 	    {% else %}
-	    <a class="newer-posts" href="{{ site.url }}/page{{ paginator.previous_page }}"><i class="fa fa-chevron-left"></i> Newer</a>
+	    <a class="newer-posts" href="{{ site.url }}/page{{ paginator.previous_page }}"><i class="fa fa-chevron-left"></i> 이전</a>
 	    {% endif %}
 	{% else %}
-    <span class="newer-posts faded"><i class="fa fa-chevron-left"></i> Newer</span>
+    <span class="newer-posts faded"><i class="fa fa-chevron-left"></i> 이전</span>
     {% endif %}
 
     
-    <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    <span class="page-number">{{ paginator.page }} of {{ paginator.total_pages }}</span>
     	{% if paginator.next_page %} 
-        <a class="older-posts" href="{{ site.url }}/page{{ paginator.next_page }}/">Older <i class="fa fa-chevron-right"></i></a>
+        <a class="older-posts" href="{{ site.url }}/page{{ paginator.next_page }}/">다음 <i class="fa fa-chevron-right"></i></a>
     	{% else %}
-    	<span class="older-posts faded">Older <i class="fa fa-chevron-right"></i></span>
+    	<span class="older-posts faded">다음 <i class="fa fa-chevron-right"></i></span>
     	{% endif %}
 	</nav>
 {% else %}
