@@ -59,7 +59,7 @@ future:      true
 highlighter: pygments
 markdown:    kramdown
 gems: [jekyll-paginate]
-paginate:    5
+paginate:    10
 paginate_path: "page:num"
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
