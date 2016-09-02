@@ -23,8 +23,9 @@ owner:
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
   description:    Stay hungy
   # Social networking links used in footer. Update and remove as you like.
-  # twitter:        
-  # facebook:       
+  linkedin: kyujinnam
+  twitter: theninthmonth9
+  facebook: nkyujin
   github:         iamkyu
   # instagram:      
   # For Google Authorship https://plus.google.com/authorship
