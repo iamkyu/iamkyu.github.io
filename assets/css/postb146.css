@@ -8,7 +8,7 @@
   clear: both; }
 
 html, body, .summer-post-container, .summer-post-header {
-  height: 100%; }
+  height: 80%; }
 
 .summer-post-header-title {
   display: inline-block;
@@ -100,19 +100,19 @@ html, body, .summer-post-container, .summer-post-header {
     .post-template .summer-post-title h1 {
       color: black;
       font-weight: 800;
-      font-size: 2.5rem;
+      font-size: 1.5rem;
       margin: 0 auto;
       line-height: 1.1;
       text-transform: uppercase; }
       @media only screen and (min-width: 40.063em) {
         .post-template .summer-post-title h1 {
-          font-size: 3.125rem; } }
+          font-size: 2.125rem; } }
       @media only screen and (min-width: 70em) {
         .post-template .summer-post-title h1 {
-          font-size: 4.375rem; } }
+          font-size: 2.375rem; } }
       @media only screen and (min-width: 90em) {
         .post-template .summer-post-title h1 {
-          font-size: 5.3125rem; } }
+          font-size: 2.375rem; } }
     .post-template .summer-post-title.background--light h1 {
       color: black; }
     .post-template .summer-post-title.background--dark h1 {
@@ -194,7 +194,7 @@ html, body, .summer-post-container, .summer-post-header {
         .post-template .summer-post-content > div:not(.summer-post-title) {
           margin: -10% auto 0; } }
       .post-template .summer-post-content > div:not(.summer-post-title) a, .post-template .summer-post-content > div:not(.summer-post-title) code {
-        color: #e51843; }
+        /*color: #e51843;*/ }
       .post-template .summer-post-content > div:not(.summer-post-title) ul, .post-template .summer-post-content > div:not(.summer-post-title) ol {
         padding-left: 1.25rem;
         font-size: 1.125rem; }
@@ -419,7 +419,7 @@ html, body, .summer-post-container, .summer-post-header {
       padding-left: 1.875rem;
       padding-right: 1.875rem; }
       .summer-page-container .summer-page-content > div:not(.summer-page-title) a, .summer-page-container .summer-page-content > div:not(.summer-page-title) code {
-        color: #e51843; }
+        /*color: #e51843;*/ }
       .summer-page-container .summer-page-content > div:not(.summer-page-title) ul, .summer-page-container .summer-page-content > div:not(.summer-page-title) ol {
         padding-left: 1.25rem;
         font-size: 1.125rem; }

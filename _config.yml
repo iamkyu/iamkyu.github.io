@@ -45,17 +45,17 @@ bing_verify:
 # Links to include in footer navigation
 # For external links add external: true
 links:
-  - title: Home
+  - title: HOME
     url: /
     external: false
     icon: home
-  - title: Featured Posts
-    url: /featured
-  - title: Categories
-    url: /categories
-  - title: Tags
+#  - title: Featured Posts
+#    url: /featured
+#  - title: Categories
+#    url: /categories
+  - title: TAGS
     url: /tags
-  - title: About
+  - title: ME
     url: /about
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -69,27 +69,12 @@ paginate_path: "page:num"
 permalink:   /:categories/:title
 
 # Build settings
-highlighter: highlighter
-markdown: redcarpet
-markdown_ext:  markdown,mkdown,mkdn,mkd,md
-
-redcarpet:
-  extensions: ["footnotes", "smart", "tables", "autolink", "strikethrough", "space_after_headers", "with_toc_data", "fenced_code_blocks"]
+markdown: kramdown
+highlighter: rouge
 
 kramdown:
-  auto_ids: true
   input: GFM
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  use_coderay: false
-
-  coderay:
-    coderay_line_numbers: 
-    coderay_line_numbers_start: 1
-    coderay_tab_width: 4
-    coderay_bold_every: 10
-    coderay_css: class
+  syntax_highlighter: rouge
 
 prose:
   rooturl: '_posts'

@@ -9,15 +9,9 @@
     
     
         <header class="summer-post-header">
-            <div class="bg-img"></div>
+            <!-- <div class="bg-img"></div> -->
             
             <div class="summer-post-menu-header">
-                
-                    <a class="summer-blog-logo" href="{{ site.url }}">
-                        <img src="{{ site.url }}/images/{{ site.logo }}" alt="Blog Logo" />
-                    </a>
-                
-                
                 
                 <div class="summer-blog-menu">
     <div class="summer-mobile-menu show-for-small">
@@ -43,9 +37,9 @@
                 <h1>{{ page.title }}</h1>
                 <p>by <strong>{{ site.owner.name }}</strong> &#8212; {% assign tagsize = page.tags.size %}{% if tagsize != 0 %}on {% for tag in page.tags %}<a href="{{ site.url }}/tags/index.html#{{ tag | cgi_encode }}" data-toggle="tooltip" title="Posts tagged with {{ tag }}" rel="tag">{{ tag }}</a>{% unless forloop.last %}&nbsp;&comma;&nbsp;{% endunless %}{% endfor %}{% endif %} <strong><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time></strong></p>
             </div>
-            <div class="bg-img"></div>
+            <!-- <div class="bg-img"></div> -->
         </header>
-        {% if page.imagefeature %}<img src="{{ site.url }}/images/{{ page.imagefeature }}" alt="cover-image" />{% endif %}
+        <!-- {% if page.imagefeature %}<img src="{{ site.url }}/images/{{ page.imagefeature }}" alt="cover-image" />{% endif %} -->
         <article class="summer-post-content post">
             <div>{{ content }}
             </div>
