@@ -1,0 +1,3 @@
+```bash
+$ jekyll serve --watch
+```
