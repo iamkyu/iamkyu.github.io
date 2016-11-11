@@ -51,7 +51,7 @@ nav:
   - name:           "Tags"
     url:            "/tags"
   - name:           "Books"
-    url:            "https://github.com/iamkyu/TIL/tree/master/book-summary"
+    url:            "https://github.com/iamkyu/TIL/blob/master/book-summary/readme.md"
 
 
 
