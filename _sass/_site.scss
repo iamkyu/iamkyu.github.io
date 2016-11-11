@@ -155,7 +155,7 @@ body {
 
 .list {
   &-post {
-    padding: 4% 2%;
+    padding: 0% 2%;
     &:hover {
     background-color: $background-over-color;
     border-color: transparent;
@@ -282,6 +282,7 @@ body {
   Archive
   -------------- */
 .archive {
+  padding: 2%;
   &-list {
     &-post {
 

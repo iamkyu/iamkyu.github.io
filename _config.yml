@@ -9,8 +9,8 @@ name:               "MY LIBRARY"
 
 author:
   name:             iamkyu
-  # facebook:         your-id
-  # twitter:          your-id
+  facebook:         nkyujin
+  twitter:          onoctober
   github:           iamkyu
   linkedin:         kyujinnam
   # medium:           your-id
@@ -36,7 +36,7 @@ timezone:           Asia/Seoul
 permalink:          /:year-:month-:day/:title/
 
 # Pagination
-paginate:           5
+paginate:           15
 paginate_path:      /page:num/
 
 # Markdown
@@ -48,11 +48,9 @@ kramdown:
 nav:
   - name:           "About"
     url:            "/about"
-  - name:           "Archive"
-    url:            "/archive"
   - name:           "Tags"
     url:            "/tags"
-  - name:           "Reads"
+  - name:           "Books"
     url:            "https://github.com/iamkyu/TIL/tree/master/book-summary"
 
 
