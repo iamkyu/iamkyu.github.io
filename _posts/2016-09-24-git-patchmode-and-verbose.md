@@ -18,9 +18,9 @@ share: true
 
 커밋이라는 행위는 내 코드, 내가 작성한 코드가 나만의 통제를 벗어나는 것이다. 그래서 나는 커밋 전에는 가능한 꼼꼼하게 다시 한번 보려고 노력한다. 내 코드를 내 스스로 다시 한번 리뷰하는 것이다. 통합개발도구(IDE)에서는 현재 원격저장소에 있는 해당코드와 내가 가지고 있는 코드의 차이(diff) 를 구분하기 쉽게 보여 준다.
 
-![git-patchmode-and-verbose-img1](img/git-patchmode-and-verbose-img1.png)
+![git-patchmode-and-verbose-img1](https://lh3.googleusercontent.com/OZGh8oOeb0sYpWX9beOZ6Jv7veO1QRkNt4e7xot10Ve7sNLMvgp_BwyX-XA7uTl51LmBrsNzBar8LveNI4jGAWCP6bcJsDmgTHAMsOz264_8G9fDR-94qA97VyPLUw3PFuPpCwyiRAffgGVr8WsQegNbUHrpUmzxMgjG0Kc_4fhWUoYBB7VbWsv2ecNieKKHxdDgAwlJm_AFpsA3NMYGNG2e69u7SbokhbACZMBmekVeKMaHQMrWm3bOGeqjmLNCCad11pFMG39feqWTvlaLYw26P_XxHDS6_MnH1Ygoqx7pHHQRO4cPnMrGnAThahbOARfTKZd2vmImr3aNMRF5dqS93h4mlj5SH840aA1s8EF4-i_N5RNtstn2cqoEivnl2hg51rplqzI0a19llKdRNxBHAa7oFXkpiVXn5TRJhkZT8um2Yj3jncjY-Nh-APt8dcLfiB_wWKeJVKEg1v7u9dt621FBvE2AtjSOVeVSSYlkbvfzXRJODmKT5b6fArbQ9YZnZcRLXAmioLUpyaWhkqelCP7gRjsFa3AWCNWSB9klXblZs3A1Y10QmNLqQPglRFL87AioTtaQOutJ7JiFGTkEfdRTV_-PFT8UNr_rbOpkZ83Y=w1236-h522-no)
 
-여기서 한 가지 아쉬운 점은, 내가 변경한 소스들을 파일 단위로 하나 하나 그렇게 비교를 해봐야 한다는 것이다.  ![git-patchmode-and-verbose-img2](img/git-patchmode-and-verbose-img2.png)
+여기서 한 가지 아쉬운 점은, 내가 변경한 소스들을 파일 단위로 하나 하나 그렇게 비교를 해봐야 한다는 것이다.  ![git-patchmode-and-verbose-img2](https://lh3.googleusercontent.com/wLg9aBOrX4QMlwCwyqR-vmYb2WzrQ9X-wVQwCJxhNnZP_7M9dcDOW0dHo1dOpFLafQ2OsJzVz-CGGOyMbcyIAuy58UJlJe7wDK_swE6Br112LyBgCwjnFR-hXyqYo5eyey8RurV8Up8tIDARa3ZTWDNvyM8Ub70H6KM-W2MmIy5OtmANDETbyfNuT_LSfZpTbtfkVBLl3PEyoxBy4S7PSmYsz687aEHgqlYG-omz7mnz8GY6w7ojGNJKjNRDeP8YMiARxuxTnhcKEIJ9mzwDgUIhCzTuL3sMypCNcZrj7gW0pxt-D-0bCV2a92S8a6EJYNGtwnR9oFHIB1SqiOh9eeZjbKvUbghfMKgY46sZIL48hGvBBzplVc2oZA6z9rI9b0FkJntCgPwosgDdqBpWWurqfG_v-gwgtHZv0mxJkeXDQwJcFDfhgb3e0CjLdYrWl9zU5psCMAzV8u-13YsU1D1sq31-CDP9pZRFG_tpURhSHT2lztgaF_JIpe8hOxOxt8S3vPkHvEBQGjf-61NoaRuKf7yYVOnwj8kbpV0RkWvHXZAklPpoql7XqENCN-AyWe7KJDIhw4RA27j6y9fcuny31Dv0zyAcDM6fjqTC6y2W95uD=w786-h281-no)
 
 만약 10개의 소스파일을 수정했다면 10개 파일을 클릭해서 열어봐서 비교해야 하고, 20개의 소스 파일을 수정 했다면 20개를 열어 봐야 하는 것이다. 굉장히 귀찮은 일이다.
 
@@ -36,7 +36,7 @@ $ git add --patch
 
 패치모드는 추척되고 있는 소스 중, 변경 된 모든 것을 추적하여 변경 된 덩어리(hunk) 단위로 돌아가며 보여준다.
 
-![git-patchmode-and-verbose-img3](img/git-patchmode-and-verbose-img3.png)
+![git-patchmode-and-verbose-img3](https://lh3.googleusercontent.com/GzuwSesOtqYXYyOZ7kb0PI4tvtRh9Xi91dz_II8hoSUgU7-4iNAAYA94gbwTD1cRkXmHhdN6WAgxW6o0000tjI0VXCN6giKLoh4qN5sgbFcG3y1sysFqFAEqLmgBf8cM9yg51oPgg0njdA-bV0x_fRaHsB1ZvWYF75V7nsYWg93NvztB268IWhSJbl_S7RbHcN2mWZcY6M3stjjAP7HLRpMX43vTfhX9-iMatENshDE-0pX8C720aqXvFbhLetKshJ1im5u8_R4aAaXckDQkmS7MgYp8Gjz051_9OuE5hp09P_UKM5lrf5ocNqHmKb71q-D-22wiCCezNWTvifRVmBswLpoHQGSC6av1DpAGFFI2UnQjV_97HTwmjuPDpxSSl3FI0EKS3qZqj992gVAC_1YsTklVZ7nnHz3RAONKjmlLWi6ZIAqENAQY8sRuULsINmoZTIpry8VCFfR_9PbjYm8xc7NVaRx2Z_avw2IavrG1qqzCgUUQgCbfblcEiqMFJGW-2klo_YJWrL4c8PeZqXC0oo2LLbl5GDfnK49LOR2G3GlmVEMrn6djwJ5CwAtHXQnq94Z3P-8-0b4ydPxERNKv77_PG4uksJOjLmFk9bus7DQz=w703-h305-no)
 
 글로는 잘 이해가 안갈텐데, 위와 같이 변경 된 (`+` 또는 `-`) 부분만을 보여주면서 모든 소스 파일들의 변화를 추적한다.
 
