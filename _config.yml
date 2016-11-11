@@ -23,7 +23,7 @@ google-analytics:
 
 # Disqus
 disqus:
-  id:               "onoctober"
+  id:               "my-library"
 
 # URL
 #url:                "https://iamkyu.github.io" # the base hostname & protocol for your site
