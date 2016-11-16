@@ -8,6 +8,8 @@ comments: true
 share: true
 
 ---
+# 목차
+{:toc}
 
 ## switch-case
 
