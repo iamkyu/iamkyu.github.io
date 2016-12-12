@@ -9,6 +9,6 @@ permalink: /about/
 
 `java`, `servlet`, `jsp`, `Spring Framework`,  `RDBMS`, `Mybatis/iBatis`, `http`,  `git`, `svn`
 
-
+> 2016년 12월, [티스토리](http://onoctober.tistory.com)에서 [지킬블로그](https://iamkyu.github.io)로 이전
 
 ###### Powered by [Jekyll](http://jekyllrb.com) Hosted on [Github Pages](https://pages.github.com) | Template by [Kiko Plus](https://github.com/AWEEKJ/Kiko-plus)
