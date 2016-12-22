@@ -7,9 +7,9 @@
   <nav class="header-nav">
     {% for nav in site.nav %}
     {% if nav.url contains 'http://' or nav.url contains 'https://' %}
-    <a href="{{ nav.url }}">{{ nav.name }}</a>
+    <a href="{{ nav.url }}" onclick="gSend('{{ nav.name }}', 'm')">{{ nav.name }}</a>
     {% else %}
-    <a href="{{ nav.url | prepend: site.baseurl }}">{{ nav.name }}</a>
+    <a href="{{ nav.url | prepend: site.baseurl }}" onclick="gSend('{{ nav.name }}', 'm')">{{ nav.name }}</a>
     {% endif %}
     {% endfor %}
   </nav>
