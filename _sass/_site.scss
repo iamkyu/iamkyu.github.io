@@ -285,6 +285,9 @@ body {
   padding: 2%;
   &-list {
     &-post {
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
 
       a {
         color: $base-color;
