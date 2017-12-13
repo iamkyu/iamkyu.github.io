@@ -9,12 +9,12 @@ name:               "MY LIBRARY"
 
 author:
   name:             iamkyu
-  facebook:         nkyujin
-  twitter:          theninthmonth9
+  # facebook:        
+  # twitter:        
   github:           iamkyu
   linkedin:         kyujinnam
-  # medium:           your-id
-  # tumblr:           your-id
+  # medium:         
+  # tumblr:         
   email:            kyujnam@gmail.com
 
 # Google-analytics
@@ -51,7 +51,7 @@ nav:
   - name:           "Tags"
     url:            "/tags"
   - name:           "Books"
-    url:            "https://github.com/iamkyu/TIL/blob/master/book-summary/readme.md"
+    url:            "https://github.com/iamkyu/TIL/blob/master/books/books.md"
 
 
 
