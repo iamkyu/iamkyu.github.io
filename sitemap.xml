@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://iamkyu.github.io/tags/java/</loc>
+    <lastmod>2019-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/20191109-java-call-by-reference/</loc>
+    <lastmod>2019-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/</loc>
+    <lastmod>2019-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/</loc>
+    <lastmod>2019-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/tags/</loc>
+    <lastmod>2019-11-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/20191023-amazon-sqs-dlq/</loc>
+    <lastmod>2019-10-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/tags/aws/</loc>
+    <lastmod>2019-10-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/20170314-java-annotation/</loc>
+    <lastmod>2017-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/tags/git/</loc>
+    <lastmod>2016-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/20160924-git-patchmode-and-verbose/</loc>
+    <lastmod>2016-09-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/20160820-git-commit-merge/</loc>
+    <lastmod>2016-08-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/20160901-java-switch-and-hash/</loc>
+    <lastmod>2016-08-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/20160716-java-split/</loc>
+    <lastmod>2016-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/tags/book/</loc>
+    <lastmod>2016-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/post/20160506-art-of-readable-code/</loc>
+    <lastmod>2016-05-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://iamkyu.github.io/categories/</loc>
+  </url>
+  
+</urlset>

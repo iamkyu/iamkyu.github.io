@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>namkyujin.com</title>
+    <link>https://iamkyu.github.io/</link>
+    <description>Recent content on namkyujin.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Sat, 09 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://iamkyu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java, Call By Reference 에 대한 오해</title>
+      <link>https://iamkyu.github.io/post/20191109-java-call-by-reference/</link>
+      <pubDate>Sat, 09 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/post/20191109-java-call-by-reference/</guid>
+      <description>Java, Call By Reference 에 대한 오해 이제까지 기본형은 Call By Value, 참조형은 Call By Reference로 막연히 알고 있었다. 그런데 생성자나 메서드를 통해 전달된 값을 사용할 때 오해하고 있는 부분이 있어 이를 정리한다.
+결론부터 얘기하자면
+ Reference data type parameters, such as objects, are also passed into methods by value.
+ 오라클의 Java Tutorials 문서 중 Passing Information to a Method or a Constructor를 살펴보면 위와 같이 서술되어 있다. 즉, 참조형 데이터 타입 역시 값으로 메소드에 전달된다는 것.</description>
+    </item>
+    
+    <item>
+      <title>Amazon SQS 에서 배달 못한 편지 처리</title>
+      <link>https://iamkyu.github.io/post/20191023-amazon-sqs-dlq/</link>
+      <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/post/20191023-amazon-sqs-dlq/</guid>
+      <description>Amazon SQS 에서 배달 못한 편지 처리 현재 웹 애플리케이션을 개발하는 환경에서는 비동기 메세지 기반 통신을 위해 AWS의 완전 관리형 서비스를 사용하고 있다.
+각 서비스는 무언가 발생했을 때 이벤트를 게시하고 다른 서비스는 이 이벤트를 인식하고 어떠한 처리를 해야 한다. 이때, 이벤트에 관심 있는 서비스가 N개 이기 때문에 팬아웃 메시징을 구현해야 하는데 AWS의 SNS와 SQS 조합을 통해 어렵지 않게 적용할 수 있다.
+이제 이벤트에 관심 있는 서비스는 SQS를 폴링하며 새로운 메시지가 도착하면 소비할 수 있는데 여러 가지 이유로 메시지를 제때 소비 못 할 수 있다.</description>
+    </item>
+    
+    <item>
+      <title>자바의 어노테이션</title>
+      <link>https://iamkyu.github.io/post/20170314-java-annotation/</link>
+      <pubDate>Tue, 14 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/post/20170314-java-annotation/</guid>
+      <description>자바의 어노테이션 JDK1.5 부터 제공된 기능인 어노테이션은 @(;AT) 으로 시작하는 주석의 한 형태를 말한다. @Override, @SuppressWarnings(&amp;quot;&amp;quot;) 과 같은 어노테이션에 익숙할 것이다.
+ 어노테이션은 메타데이터 한 형태로, 프로그램에 대한 정보를 제공하지만, 그 프로그램의 일부는 아니다. 어노테이션을 설정한 코드에 직접적인 영향을 미치지는 않는다.
+ Oracle의 자바 튜토리얼 문서에서 어노테이션을 위와 같이 정의하며 용도를 설명한다.
+ 컴파일러를 위한 정보를 제공하기 위해. 컴파일 시점에 어떤 코드나 XML 파일 등을 생성하기 위해. 런타임 시점에 추가적인 처리를 하기 위해.</description>
+    </item>
+    
+    <item>
+      <title>GIT 더 꼼꼼하게 커밋하기</title>
+      <link>https://iamkyu.github.io/post/20160924-git-patchmode-and-verbose/</link>
+      <pubDate>Sat, 24 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/post/20160924-git-patchmode-and-verbose/</guid>
+      <description>GIT 더 꼼꼼하게 커밋하기 어쪄면 코드(Code)를 다루는 작업은 fetch로 시작해서 commit으로 끝난다. 버전관리시스템을 통해 여러명의 팀원이 협업을 한다면 아침에 출근해서 원격저장소와 소스코드의 버전(Sync)을 맞추고 작업을 진행한다. 그리고 내 작업량을 모두 해치우고 커밋을 하고 나서야 한숨 돌릴 수 있다.
+ Git에서는 로컬 저장소에 소스코드를 올리는 일을 Commit, 받는 일을 Fetch 라고 하고 원격 저장소에 올리는 일은 Push 받는 일은 Pull 라고 하지만, 편의상 이 글에서는 Commit 과 Fetch 라는 용어만 사용한다.</description>
+    </item>
+    
+    <item>
+      <title>GIT 여러 커밋을 하나로 합치기</title>
+      <link>https://iamkyu.github.io/post/20160820-git-commit-merge/</link>
+      <pubDate>Sat, 20 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/post/20160820-git-commit-merge/</guid>
+      <description>GIT 여러 commit을 하나로 합치기 버전 관리 시스템은 변경 내역을 기록하고 보관 하기 위해 사용하는 만큼 이력들(commit log)를 잘 관리하는 것이 중요하다. 이를 위해서는 은근히 신경 써야 할 것 들이 많은데
+ 좋은 커밋 메시지를 작성한다. 일련된 작업 단위의 커밋 커밋 전략, 브런치 전략 등등  회사에서는 SVN을 사용하고 개인 작업용으로는 주로 Git을 사용했는데 최근 스터디 모임등으로 인해 Git으로 협업을 하게 되었다. 따라서 혼자 브런치를 가르고 합치는 등의 방법을 연습하고 있는데 아주 재미있다.</description>
+    </item>
+    
+    <item>
+      <title>자바의 switch-case</title>
+      <link>https://iamkyu.github.io/post/20160901-java-switch-and-hash/</link>
+      <pubDate>Mon, 15 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/post/20160901-java-switch-and-hash/</guid>
+      <description>switch-case 조건 분기를 해야 할 때, 경우에 따라 if-then-else 보다 switch-case를 잘 사용하면 훨씬 깔끔한 코드를 작성할 수 있다.
+1int month = 3; 2String monthStr; 3 4switch (month) { 5 case 1: monthStr = &amp;#34;jan&amp;#34;; 6 break; 7 8 case 2: monthStr = &amp;#34;fab&amp;#34;; 9 break; 10 11 case 3: monthStr = &amp;#34;mar&amp;#34;; 12 break; 13 14 // .. 중략 1516default: monthStr = &amp;#34;Not valid&amp;#34;; 17 break; 18} 기존의 자바는 char, byte, short, int와 같은 기본형 타입에 대해서만 switch-case 사용이 가능했지만 JDK7 이후 버전부터는 String형 사용이 가능해졌다.</description>
+    </item>
+    
+    <item>
+      <title>자바에서 문자를 구분자로 분리하기</title>
+      <link>https://iamkyu.github.io/post/20160716-java-split/</link>
+      <pubDate>Sat, 16 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/post/20160716-java-split/</guid>
+      <description>자바에서 문자를 구분자로 분리하기 셀렉트리스트의 하나의 옵션에 여러 값(Value)을 줘야 할 경우 보통 구분자(delimiter)를 넣어두고 그 구분자를 기준으로 하여 하나의 값을 여러 값으로 분리해내는 방식을 사용한다.
+1&amp;lt;body&amp;gt; 2&amp;lt;select id=&amp;#34;select_list&amp;#34;&amp;gt; 3 &amp;lt;option value=&amp;#34;APPLE|CARROT|PIZZA&amp;#34;&amp;gt;Foods&amp;lt;/option&amp;gt; 4&amp;lt;/select&amp;gt; 5 6&amp;lt;script&amp;gt; 7var options = $(&amp;#34;#select_list option:selected&amp;#34;).val(); 8var values = options.split(&amp;#34;|&amp;#34;); 9 10var params = &amp;#34;?FRUIT=&amp;#34; + values[0] 11 params += &amp;#34;&amp;amp;VEGETABLE=&amp;#34; + values[1] 12 params += &amp;#34;&amp;amp;INSTANT=&amp;#34; + values[2]; 13 14/* 15values[0] = &amp;#34;APPLE&amp;#34; 16values[1] = &amp;#34;CARROT&amp;#34; 17values[2] = &amp;#34;PIZZA&amp;#34; 18*/ 19&amp;lt;/script&amp;gt; 20&amp;lt;/body&amp;gt; 주로 클라이언트측에서 특정 조건 값으로 조회(SELECT)를 할 때 위와 같이 view 단에서 자바스크립트를 통해 아예 다 분리를 한 다음 쿼리스트링을 만들어 HTTP GET 요청을 보냈다.</description>
+    </item>
+    
+    <item>
+      <title>읽기 좋은 코드가 좋은 코드다</title>
+      <link>https://iamkyu.github.io/post/20160506-art-of-readable-code/</link>
+      <pubDate>Fri, 06 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/post/20160506-art-of-readable-code/</guid>
+      <description>읽기 좋은 코드가 좋은 코드다 (원제 The Art of Readable Code), 더스틴보즈웰, 트레버파우커 저 추천하고 싶은 책이다. 예전부터 잘 작동하는 깔끔한 코드 (Clean code that works) 에 관심이 많았기 때문에 관련 된 책을 몇 권 읽기도 했었고, 프로그래밍과 관련된 대부분의 책에서는 좋은 코드에 대해 꼭 언급한다. 코드 작성에 대해 가장 자세한 조언을 해준 책은 Code Complete2, 스티브맥코넬 저 (현재 절판) 이긴 하지만 책이 너무 두껍고 잘 읽히지도 않는다. 그에 반해 이 책은 좋은 코드에 관한 거의 모든 내용을 쉽게 담았다.</description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>https://iamkyu.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://iamkyu.github.io/about/</guid>
+      <description>동작하는 깔끔한 코드 (Clean code that works)라는 말을 좋아합니다. 비즈니스 복잡함을 잘 다루고 변경하기 쉬운 코드를 작성하기 위해 고민합니다. 이를 위해 객체지향, 도메인 주도설계, 단위 테스트에 관심이 많습니다.
+ 2016년 12월, 티스토리에서 지킬블로그로 이전
+  2020년 8월, 정적사이트생성기를 지킬에서 휴고로 변경
+ </description>
+    </item>
+    
+  </channel>
+</rss>
