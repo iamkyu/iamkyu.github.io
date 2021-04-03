@@ -1,26 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>aws on namkyujin.com</title>
-    <link>https://iamkyu.github.io/tags/aws/</link>
-    <description>Recent content in aws on namkyujin.com</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>ko-KR</language>
-    <lastBuildDate>Wed, 23 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://iamkyu.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Amazon SQS 에서 배달 못한 편지 처리</title>
-      <link>https://iamkyu.github.io/post/20191023-amazon-sqs-dlq/</link>
-      <pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://iamkyu.github.io/post/20191023-amazon-sqs-dlq/</guid>
-      <description>Amazon SQS 에서 배달 못한 편지 처리 현재 웹 애플리케이션을 개발하는 환경에서는 비동기 메세지 기반 통신을 위해 AWS의 완전 관리형 서비스를 사용하고 있다.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>aws on namkyujin.com</title><link>https://iamkyu.github.io/tags/aws/</link><description>Recent content in aws on namkyujin.com</description><generator>Hugo -- gohugo.io</generator><language>ko-KR</language><lastBuildDate>Wed, 23 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://iamkyu.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>Amazon SQS 에서 배달 못한 편지 처리</title><link>https://iamkyu.github.io/post/20191023-amazon-sqs-dlq/</link><pubDate>Wed, 23 Oct 2019 00:00:00 +0000</pubDate><guid>https://iamkyu.github.io/post/20191023-amazon-sqs-dlq/</guid><description>Amazon SQS 에서 배달 못한 편지 처리 현재 웹 애플리케이션을 개발하는 환경에서는 비동기 메세지 기반 통신을 위해 AWS의 완전 관리형 서비스를 사용하고 있다.
 각 서비스는 무언가 발생했을 때 이벤트를 게시하고 다른 서비스는 이 이벤트를 인식하고 어떠한 처리를 해야 한다. 이때, 이벤트에 관심 있는 서비스가 N개 이기 때문에 팬아웃 메시징을 구현해야 하는데 AWS의 SNS와 SQS 조합을 통해 어렵지 않게 적용할 수 있다.
-이제 이벤트에 관심 있는 서비스는 SQS를 폴링하며 새로운 메시지가 도착하면 소비할 수 있는데 여러 가지 이유로 메시지를 제때 소비 못 할 수 있다.</description>
-    </item>
-    
-  </channel>
-</rss>
+이제 이벤트에 관심 있는 서비스는 SQS를 폴링하며 새로운 메시지가 도착하면 소비할 수 있는데 여러 가지 이유로 메시지를 제때 소비 못 할 수 있다.</description></item></channel></rss>

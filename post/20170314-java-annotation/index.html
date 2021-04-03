@@ -1,433 +1,69 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="google-site-verification" content="&lt;google-site-verification-code&gt;">
-<meta name="author" content="남규진">
-<meta name="description" content="남규진의 개발 블로그">
-<meta name="keywords" content="java, spring framework">
-<meta name="referrer" content="always">
-<title>자바의 어노테이션 - namkyujin.com</title>
-<link rel="stylesheet" type="text/css" href="/css/main.css">
-<link rel="icon" href="/logo/favicon.ico" type="image/x-icon">
-</head>
-<body>
-<header>
-  <div>
-    <h1><a href="https://iamkyu.github.io">namkyujin.com</a></h1>
-  </div>
-  <nav><a href="/">blog</a><a href="https://github.com/iamkyu/TIL/blob/master/books/books.md">books</a><a href="/about/">about</a></nav>
-</header>
-<main>
-  <article>
-    <div class="meta">
-  <div>2017-03-14</div>
-  <div>
-    <span><a href="https://iamkyu.github.io/tags/java/">#java</a></span>
-      </div>
-  </div>
-<div class="content">
-  <h1 id="자바의-어노테이션">자바의 어노테이션</h1>
-<p>JDK1.5 부터 제공된 기능인 어노테이션은 @(;AT) 으로 시작하는 주석의 한 형태를 말한다. <code>@Override</code>, <code>@SuppressWarnings(&quot;&quot;)</code> 과 같은 어노테이션에 익숙할 것이다.</p>
-<blockquote>
-<p>어노테이션은 메타데이터 한 형태로, 프로그램에 대한 정보를 제공하지만, 그 프로그램의 일부는 아니다. 어노테이션을 설정한 코드에 직접적인 영향을 미치지는 않는다.</p>
-</blockquote>
-<p>Oracle의 자바 튜토리얼 문서에서 어노테이션을 위와 같이 정의하며 용도를 설명한다.</p>
-<ul>
-<li>컴파일러를 위한 정보를 제공하기 위해.</li>
-<li>컴파일 시점에 어떤 코드나 XML 파일 등을 생성하기 위해.</li>
-<li>런타임 시점에 추가적인 처리를 하기 위해.</li>
-</ul>
-<h2 id="어노테이션의-형태">어노테이션의 형태</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>@Override
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#8be9fd;font-style:italic">public</span> String <span style="color:#50fa7b">toString</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>	<span style="color:#6272a4">// ...
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
-</code></pre></div><p>@(;AT) 기호는 컴파일러에 기호 다음에 오는 것이 어노테이션임을 알린다. 위 예제에서 어노테이션명은 <code>Override</code> 이다.</p>
-<h2 id="미리-정의-된-어노테이션들">미리 정의 된 어노테이션들</h2>
-<p>자바에서 바로 사용할 수 있도록 미리 정의 되어 있는 어노테이션들은 다음과 같다.</p>
-<ul>
-<li><code>@Deprecated</code></li>
-<li><code>@Override</code></li>
-<li><code>@SuperWarnings</code></li>
-<li><code>@SafeVarargs</code></li>
-<li><code>@FunctionalInterface</code></li>
-</ul>
-<p>이 어노테이션들에 대한 더 자세한 정보는 <a href="https://docs.oracle.com/javase/tutorial/java/annotations/predefined.html">자바 튜토리얼 문서</a>에서 확인할 수 있다.</p>
-<h2 id="어노테이션-직접custom-정의">어노테이션 직접(Custom) 정의</h2>
-<p>어노테이션은 필요에 따라 직접 정의할 수도 있다. 자바 튜토리얼에서 제공한 예시는 클래스에 대한 주석을 어노테이션으로 대체하는 것이다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#6272a4">// Author: iamkyu
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#6272a4">// Date: 2017/03/11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#6272a4">// Current revisision: 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#6272a4">// Last modifed: 2017/03/12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">MyClass</span> <span style="color:#ff79c6">{</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>	<span style="color:#6272a4">// ...
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
-</code></pre></div><p>이 주석들을 어노테이션으로 전환하려면 하나의 특별한 인터페이스를 선언해야 한다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>@interface ClassPreamble <span style="color:#ff79c6">{</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    String <span style="color:#50fa7b">author</span><span style="color:#ff79c6">();</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    String <span style="color:#50fa7b">date</span><span style="color:#ff79c6">();</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">currentRevision</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">default</span> 1<span style="color:#ff79c6">;</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>    String <span style="color:#50fa7b">lastmodified</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">default</span> <span style="color:#f1fa8c">&#34;N/A&#34;</span><span style="color:#ff79c6">;</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#ff79c6">}</span>
-</code></pre></div><p>이처럼 어노테이션을 직접 정의할 때 해당 어노테이션의 적용 가능 대상, 정보 유지 시간 등도 임의로 설정할 수 있다. 이를 위해 <code>@Target</code>, <code>@Retentiion</code>, <code>@Documented</code>, <code>@Inherited</code> 의 어노테이션을 사용하고 이것들을 메타(Meta) 어노테이션이라고 한다.</p>
-<p>인터페이스를 선언한 후,  <code>@ClassPreamble</code> 이라는 이름의 어노테이션을 사용할 수 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>@ClassPreamble <span style="color:#ff79c6">(</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>   author <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;iamkyu&#34;</span><span style="color:#ff79c6">,</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>   date <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;2017/03/11&#34;</span><span style="color:#ff79c6">,</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>   currentRevision <span style="color:#ff79c6">=</span> 2<span style="color:#ff79c6">,</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>   lastModified <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;2017/03/12&#34;</span><span style="color:#ff79c6">,</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#ff79c6">)</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">MyClass</span> <span style="color:#ff79c6">{</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>    <span style="color:#6272a4">// ...
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
-</code></pre></div><h2 id="어노테이션과-리플렉션">어노테이션과 리플렉션</h2>
-<p>사실 내가 궁금했던 것은 어노테이션은 어떻게 작동하는 것인가에 대해서였다. 글의 첫 부분에서 인용한 어노테이션의 정의를 다시 보자.</p>
-<blockquote>
-<p>어노테이션은 메타데이터 한 형태로, 프로그램에 대한 정보를 제공하지만, 그 프로그램의 일부는 아니다. 어노테이션을 설정한 코드에 직접적인 영향을 미치지는 않는다.</p>
-</blockquote>
-<p>어노테이션 자체가 코드에 직접적인 영향을 주지는 않는다. 그렇다면 어딘가에서 어노테이션을 인식하고 그 인식에 따라 어떤 처리 하는 코드가 또 있다는 것인데 &lsquo;어디서 어떻게&rsquo; 하는 것인지 궁금했다.</p>
-<h3 id="javalangannotationannotation-인터페이스">java.lang.annotation.Annotation 인터페이스</h3>
-<p>먼저, 모든 어노테이션은 <code>java.lang.annotation.Annotation</code> 인터페이스를 상속한다.</p>
-<p><img src="https://lh3.googleusercontent.com/VVZfNADl3kNJWhUbT9NfZpNViAvfmt2iPZxFIVbwlIGxndxbd2Tb0D18Zwub0mBdRGL9eCITOJhojCKts3NqtdxamcxJhdTJPiHyyUZ0M96FJ3fdI4fwBOGdzCmPqpfG-YjcohjalPEPIGJGKD7b-fDfFKlW3Uau5Re2HgrrS_Xne6K2XG6biPKudrgbxK_IkR-T3WSTKg7iQEZfcFAGckFumfV65EU9qQ9oGhR_W2uHhdEuJX9XOAt6wgeAsI6L6kAB2sPTTGbMw0MTVkL3H1XN8qtZrc6SksiC8bmZpv_0myyRQ1scAh_vaTSDhp9FUN68-BrFkZOBd1I_csZxXTmtPuRTJCFdJzfzG7mnJBR4YlsBkuD5S__fcyvmlVoc-qgTEwt7c_pDI4w0Urb144bpa0xizW0BAIpzZsQkBXW5Xy5vTOz9kSV_lVsQDHo6X8UrJY4b4YR4PDuy4Tf3RTpJ2DWD6_8zuqbz3OYhXyN-etzH4mLVXyc-QFrvhk5ydNHVxn8qujDfrAk0lUEEUIuJgbKxDZIt2UNCWqBoPGoJutEJCG16t0cKXR6crG8DpCMYG9SFWtZT0iZrDke-XSsq3m0P70GDayhWUZaVg7goO8_ZvFjAZS1Igp9HkmMquw2VcsI2-Gxastmi8EfmyEA8INd2_hGS=w396-h418-no" alt="Annotation 상속구조"></p>
-<p><code>ClassPreamble</code> 은 이 글의 <strong>어노테이션 직접 정의</strong> 부분에서 선언했던 커스텀 어노테이션인데, 직접 상속을 구현하지 않았는데 <code>Annotation</code> 인터페이스를 상속하고 있다. <code>@interface</code> 라는 메타 어노테이션을 통해 처리되는 듯하다.</p>
-<h3 id="스프링프레임워크의-커스텀-어노테이션">스프링프레임워크의 커스텀 어노테이션</h3>
-<p>순수 자바 코드에서 어노테이션을 찾아서 메타데이터를 읽어 들이는 부분을 찾기가 힘들었다. 그래서 스프링 프레임워크 상에서 커스텀 어노테이션을 처리하는 방식을 추적해보기로 했다. 스프링 프레임워크에서는 <code>@Controller</code>, <code>@Service</code> 등 다양한 커스텀 어노테이션이 기본적으로 내장(Built-In) 되어 있다.</p>
-<p>스프링프레임워크를 부트스트랩(Bootstrap) 하는 과정 중, 컨텍스트 설정을 읽어오는 부분이 있다. 이 코드를 따라 들어가다 보면 <code>MetaAnnotationUtils</code> 라는 클래스가 등장하는데 문서에 따르면 어노테이션을 찾거나 얻어올 뿐만 아니라 추가적인 기능도 지원한다고 한다.</p>
-<p>이 유틸리티 클래스 중 <code>findAnnotationDescriptor</code> 메서드의 일부를 보면 아래와 같다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span>Annotation composedAnnotation <span style="color:#ff79c6">:</span> clazz<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getDeclaredAnnotations</span><span style="color:#ff79c6">())</span> <span style="color:#ff79c6">{</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>	<span style="color:#6272a4">// ...
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
-</code></pre></div><p><code>clazz</code> 변수는 Class 타입이다. 이를 통해 추측할 수 있는 것은 자바의 리플렉션 기술을 통해 클래스에 선언 된 어노테이션을 읽어들일 수 있다는 것이다.</p>
-<h3 id="예시">예시</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>@Target<span style="color:#ff79c6">(</span>ElementType<span style="color:#ff79c6">.</span><span style="color:#50fa7b">TYPE</span><span style="color:#ff79c6">)</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>@Retention<span style="color:#ff79c6">(</span>RetentionPolicy<span style="color:#ff79c6">.</span><span style="color:#50fa7b">RUNTIME</span><span style="color:#ff79c6">)</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#8be9fd;font-style:italic">public</span> @interface ClassPreamble <span style="color:#ff79c6">{</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    String <span style="color:#50fa7b">author</span><span style="color:#ff79c6">();</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    String <span style="color:#50fa7b">date</span><span style="color:#ff79c6">();</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">currentRevision</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">default</span> 1<span style="color:#ff79c6">;</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>    String <span style="color:#50fa7b">lastModified</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">default</span> <span style="color:#f1fa8c">&#34;N/A&#34;</span><span style="color:#ff79c6">;</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    String <span style="color:#50fa7b">lastModifiedBy</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">default</span> <span style="color:#f1fa8c">&#34;N/A&#34;</span><span style="color:#ff79c6">;</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    String<span style="color:#ff79c6">[]</span> <span style="color:#50fa7b">reviewers</span><span style="color:#ff79c6">();</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#ff79c6">}</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#6272a4">////////////////////////////////
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#6272a4"></span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>@ClassPreamble<span style="color:#ff79c6">(</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>        author <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Tester&#34;</span><span style="color:#ff79c6">,</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>        date <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;2017/03/11&#34;</span><span style="color:#ff79c6">,</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>        reviewers <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">{</span><span style="color:#f1fa8c">&#34;John&#34;</span><span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#34;Allen&#34;</span><span style="color:#ff79c6">}</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#ff79c6">)</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">CustomAnnotation</span> <span style="color:#ff79c6">{</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>	<span style="color:#6272a4">// ...
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
-</code></pre></div><p>위의 코드와 같이 커스텀 어노테이션을 정의하고 해당 어노테이션을 사용한 클래스가 있다고 했을 때, 다음과 같은 방법으로 어노테이션의 메타데이터를 읽어올 수 있다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>@Test
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">getMetadataTest</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#6272a4">//given
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#6272a4"></span>    Class clazz <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> CustomAnnotation<span style="color:#ff79c6">().</span><span style="color:#50fa7b">getClass</span><span style="color:#ff79c6">();</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    Annotation annotation <span style="color:#ff79c6">=</span> clazz<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getAnnotation</span><span style="color:#ff79c6">(</span>ClassPreamble<span style="color:#ff79c6">.</span><span style="color:#50fa7b">class</span><span style="color:#ff79c6">);</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>    <span style="color:#6272a4">//when
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#6272a4"></span>    String result <span style="color:#ff79c6">=</span> annotation<span style="color:#ff79c6">.</span><span style="color:#50fa7b">toString</span><span style="color:#ff79c6">();</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    <span style="color:#6272a4">// @lang.annotation.ClassPreamble(currentRevision=1, lastModified=N/A, lastModifiedBy=N/A, author=Tester, date=2017/03/11, reviewers=[John, Allen])
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#6272a4"></span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    <span style="color:#6272a4">//then
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#6272a4"></span>    assertTrue<span style="color:#ff79c6">(</span>result<span style="color:#ff79c6">.</span><span style="color:#50fa7b">contains</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;currentRevision=1&#34;</span><span style="color:#ff79c6">));</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>    assertTrue<span style="color:#ff79c6">(</span>result<span style="color:#ff79c6">.</span><span style="color:#50fa7b">contains</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;lastModified=N/A&#34;</span><span style="color:#ff79c6">));</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>    assertTrue<span style="color:#ff79c6">(</span>result<span style="color:#ff79c6">.</span><span style="color:#50fa7b">contains</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;lastModifiedBy=N/A&#34;</span><span style="color:#ff79c6">));</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>    assertTrue<span style="color:#ff79c6">(</span>result<span style="color:#ff79c6">.</span><span style="color:#50fa7b">contains</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;author=Tester&#34;</span><span style="color:#ff79c6">));</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>    assertTrue<span style="color:#ff79c6">(</span>result<span style="color:#ff79c6">.</span><span style="color:#50fa7b">contains</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;date=2017/03/11&#34;</span><span style="color:#ff79c6">));</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>    assertTrue<span style="color:#ff79c6">(</span>result<span style="color:#ff79c6">.</span><span style="color:#50fa7b">contains</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;reviewers=[John, Allen]&#34;</span><span style="color:#ff79c6">));</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#ff79c6">}</span>
-</code></pre></div><h1 id="참고">참고</h1>
-<ul>
-<li><a href="https://docs.oracle.com/javase/tutorial/java/annotations">The Java™ Tutorials - Lesson : Annotations</a></li>
-<li><a href="http://kang594.blog.me/39704853">Annotation과 Reflection, 그리고 코드 속의 MetaData</a></li>
-</ul>
-</div>
-
-<div class="side" style="position: fixed; right:50px; max-width:255px; overflow:auto; top: 120px; width: 220px; bottom:90px">
-
-
-
-
-
-
-
-
-
-
-<div class="toc">
-
-    <div class="page-header"><strong>Table of contents</strong></div>
-
-    <div id="page-scrollspy" class="toc-nav">
-
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%ec%9e%90%eb%b0%94%ec%9d%98-%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98">
-                            자바의 어노테이션
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98%ec%9d%98-%ed%98%95%ed%83%9c">
-                            어노테이션의 형태
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%eb%af%b8%eb%a6%ac-%ec%a0%95%ec%9d%98-%eb%90%9c-%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98%eb%93%a4">
-                            미리 정의 된 어노테이션들
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98-%ec%a7%81%ec%a0%91custom-%ec%a0%95%ec%9d%98">
-                            어노테이션 직접(Custom) 정의
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98%ea%b3%bc-%eb%a6%ac%ed%94%8c%eb%a0%89%ec%85%98">
-                            어노테이션과 리플렉션
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#javalangannotationannotation-%ec%9d%b8%ed%84%b0%ed%8e%98%ec%9d%b4%ec%8a%a4">
-                            java.lang.annotation.Annotation 인터페이스
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%ec%8a%a4%ed%94%84%eb%a7%81%ed%94%84%eb%a0%88%ec%9e%84%ec%9b%8c%ed%81%ac%ec%9d%98-%ec%bb%a4%ec%8a%a4%ed%85%80-%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98">
-                            스프링프레임워크의 커스텀 어노테이션
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%ec%98%88%ec%8b%9c">
-                            예시
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%ec%b0%b8%ea%b3%a0">
-                            참고
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                
-            
-        
-
-    </div>
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-<script src="https://utteranc.es/client.js"
-        repo="iamkyu/iamkyu.github.io"
-        issue-term="title"
-        label="comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-
-
-
-
-  </article>
-</main>
-<footer>
-  <div>
-    <div>&copy; 2020 Kyujin Nam. <a href="https://creativecommons.org/licenses/by/4.0/deed.ko">CC-BY-4.0</a><p>Powered by <a href="https://gohugo.io/">Hugo</a> with <a href="https://github.com/yanlinlin82/simple-style">Simple-Style</a></div>
-  </div>
-</footer>
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-87267111-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-<a href="https://github.com/iamkyu/iamkyu.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:800px){.github-corner{display:none}}</style></body>
-</html>
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=google-site-verification content="<google-site-verification-code>"><meta name=author content="남규진"><meta name=description content="남규진의 개발 블로그"><meta name=keywords content="java,spring framework"><meta name=referrer content="always"><title>자바의 어노테이션 - namkyujin.com</title><link rel=stylesheet type=text/css href=/css/main.css><link rel=icon href=/logo/favicon.ico type=image/x-icon></head><body><header><div><h1><a href=https://iamkyu.github.io>namkyujin.com</a></h1></div><nav><a href=/>blog</a><a href=https://github.com/iamkyu/TIL/blob/master/books/books.md>books</a><a href=/about/>about</a></nav></header><main><article><div class=meta><div>2017-03-14</div><div><span><a href=https://iamkyu.github.io/tags/java/>#java</a></span></div></div><div class=content><h1 id=자바의-어노테이션>자바의 어노테이션</h1><p>JDK1.5 부터 제공된 기능인 어노테이션은 @(;AT) 으로 시작하는 주석의 한 형태를 말한다. <code>@Override</code>, <code>@SuppressWarnings("")</code> 과 같은 어노테이션에 익숙할 것이다.</p><blockquote><p>어노테이션은 메타데이터 한 형태로, 프로그램에 대한 정보를 제공하지만, 그 프로그램의 일부는 아니다. 어노테이션을 설정한 코드에 직접적인 영향을 미치지는 않는다.</p></blockquote><p>Oracle의 자바 튜토리얼 문서에서 어노테이션을 위와 같이 정의하며 용도를 설명한다.</p><ul><li>컴파일러를 위한 정보를 제공하기 위해.</li><li>컴파일 시점에 어떤 코드나 XML 파일 등을 생성하기 위해.</li><li>런타임 시점에 추가적인 처리를 하기 위해.</li></ul><h2 id=어노테이션의-형태>어노테이션의 형태</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>@Override
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span style=color:#8be9fd;font-style:italic>public</span> String <span style=color:#50fa7b>toString</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span> <span style=color:#ff79c6>{</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span>	<span style=color:#6272a4>// ...
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span style=color:#6272a4></span><span style=color:#ff79c6>}</span>
+</code></pre></div><p>@(;AT) 기호는 컴파일러에 기호 다음에 오는 것이 어노테이션임을 알린다. 위 예제에서 어노테이션명은 <code>Override</code> 이다.</p><h2 id=미리-정의-된-어노테이션들>미리 정의 된 어노테이션들</h2><p>자바에서 바로 사용할 수 있도록 미리 정의 되어 있는 어노테이션들은 다음과 같다.</p><ul><li><code>@Deprecated</code></li><li><code>@Override</code></li><li><code>@SuperWarnings</code></li><li><code>@SafeVarargs</code></li><li><code>@FunctionalInterface</code></li></ul><p>이 어노테이션들에 대한 더 자세한 정보는 <a href=https://docs.oracle.com/javase/tutorial/java/annotations/predefined.html>자바 튜토리얼 문서</a>에서 확인할 수 있다.</p><h2 id=어노테이션-직접custom-정의>어노테이션 직접(Custom) 정의</h2><p>어노테이션은 필요에 따라 직접 정의할 수도 있다. 자바 튜토리얼에서 제공한 예시는 클래스에 대한 주석을 어노테이션으로 대체하는 것이다.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span style=color:#6272a4>// Author: iamkyu
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span style=color:#6272a4></span><span style=color:#6272a4>// Date: 2017/03/11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span style=color:#6272a4></span><span style=color:#6272a4>// Current revisision: 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span style=color:#6272a4></span><span style=color:#6272a4>// Last modifed: 2017/03/12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span style=color:#6272a4></span><span style=color:#8be9fd;font-style:italic>class</span> <span style=color:#50fa7b>MyClass</span> <span style=color:#ff79c6>{</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6</span>	<span style=color:#6272a4>// ...
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7</span><span style=color:#6272a4></span><span style=color:#ff79c6>}</span>
+</code></pre></div><p>이 주석들을 어노테이션으로 전환하려면 하나의 특별한 인터페이스를 선언해야 한다.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>@interface ClassPreamble <span style=color:#ff79c6>{</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span>    String <span style=color:#50fa7b>author</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span>    String <span style=color:#50fa7b>date</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span>    <span style=color:#8be9fd>int</span> <span style=color:#50fa7b>currentRevision</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span> <span style=color:#ff79c6>default</span> 1<span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span>    String <span style=color:#50fa7b>lastmodified</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span> <span style=color:#ff79c6>default</span> <span style=color:#f1fa8c>&#34;N/A&#34;</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6</span><span style=color:#ff79c6>}</span>
+</code></pre></div><p>이처럼 어노테이션을 직접 정의할 때 해당 어노테이션의 적용 가능 대상, 정보 유지 시간 등도 임의로 설정할 수 있다. 이를 위해 <code>@Target</code>, <code>@Retentiion</code>, <code>@Documented</code>, <code>@Inherited</code> 의 어노테이션을 사용하고 이것들을 메타(Meta) 어노테이션이라고 한다.</p><p>인터페이스를 선언한 후, <code>@ClassPreamble</code> 이라는 이름의 어노테이션을 사용할 수 있다.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span>@ClassPreamble <span style=color:#ff79c6>(</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span>   author <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;iamkyu&#34;</span><span style=color:#ff79c6>,</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span>   date <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;2017/03/11&#34;</span><span style=color:#ff79c6>,</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span>   currentRevision <span style=color:#ff79c6>=</span> 2<span style=color:#ff79c6>,</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span>   lastModified <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;2017/03/12&#34;</span><span style=color:#ff79c6>,</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6</span><span style=color:#ff79c6>)</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7</span><span style=color:#8be9fd;font-style:italic>class</span> <span style=color:#50fa7b>MyClass</span> <span style=color:#ff79c6>{</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8</span>    <span style=color:#6272a4>// ...
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">9</span><span style=color:#6272a4></span><span style=color:#ff79c6>}</span>
+</code></pre></div><h2 id=어노테이션과-리플렉션>어노테이션과 리플렉션</h2><p>사실 내가 궁금했던 것은 어노테이션은 어떻게 작동하는 것인가에 대해서였다. 글의 첫 부분에서 인용한 어노테이션의 정의를 다시 보자.</p><blockquote><p>어노테이션은 메타데이터 한 형태로, 프로그램에 대한 정보를 제공하지만, 그 프로그램의 일부는 아니다. 어노테이션을 설정한 코드에 직접적인 영향을 미치지는 않는다.</p></blockquote><p>어노테이션 자체가 코드에 직접적인 영향을 주지는 않는다. 그렇다면 어딘가에서 어노테이션을 인식하고 그 인식에 따라 어떤 처리 하는 코드가 또 있다는 것인데 &lsquo;어디서 어떻게&rsquo; 하는 것인지 궁금했다.</p><h3 id=javalangannotationannotation-인터페이스>java.lang.annotation.Annotation 인터페이스</h3><p>먼저, 모든 어노테이션은 <code>java.lang.annotation.Annotation</code> 인터페이스를 상속한다.</p><p><img src="https://lh3.googleusercontent.com/VVZfNADl3kNJWhUbT9NfZpNViAvfmt2iPZxFIVbwlIGxndxbd2Tb0D18Zwub0mBdRGL9eCITOJhojCKts3NqtdxamcxJhdTJPiHyyUZ0M96FJ3fdI4fwBOGdzCmPqpfG-YjcohjalPEPIGJGKD7b-fDfFKlW3Uau5Re2HgrrS_Xne6K2XG6biPKudrgbxK_IkR-T3WSTKg7iQEZfcFAGckFumfV65EU9qQ9oGhR_W2uHhdEuJX9XOAt6wgeAsI6L6kAB2sPTTGbMw0MTVkL3H1XN8qtZrc6SksiC8bmZpv_0myyRQ1scAh_vaTSDhp9FUN68-BrFkZOBd1I_csZxXTmtPuRTJCFdJzfzG7mnJBR4YlsBkuD5S__fcyvmlVoc-qgTEwt7c_pDI4w0Urb144bpa0xizW0BAIpzZsQkBXW5Xy5vTOz9kSV_lVsQDHo6X8UrJY4b4YR4PDuy4Tf3RTpJ2DWD6_8zuqbz3OYhXyN-etzH4mLVXyc-QFrvhk5ydNHVxn8qujDfrAk0lUEEUIuJgbKxDZIt2UNCWqBoPGoJutEJCG16t0cKXR6crG8DpCMYG9SFWtZT0iZrDke-XSsq3m0P70GDayhWUZaVg7goO8_ZvFjAZS1Igp9HkmMquw2VcsI2-Gxastmi8EfmyEA8INd2_hGS=w396-h418-no" alt="Annotation 상속구조"></p><p><code>ClassPreamble</code> 은 이 글의 <strong>어노테이션 직접 정의</strong> 부분에서 선언했던 커스텀 어노테이션인데, 직접 상속을 구현하지 않았는데 <code>Annotation</code> 인터페이스를 상속하고 있다. <code>@interface</code> 라는 메타 어노테이션을 통해 처리되는 듯하다.</p><h3 id=스프링프레임워크의-커스텀-어노테이션>스프링프레임워크의 커스텀 어노테이션</h3><p>순수 자바 코드에서 어노테이션을 찾아서 메타데이터를 읽어 들이는 부분을 찾기가 힘들었다. 그래서 스프링 프레임워크 상에서 커스텀 어노테이션을 처리하는 방식을 추적해보기로 했다. 스프링 프레임워크에서는 <code>@Controller</code>, <code>@Service</code> 등 다양한 커스텀 어노테이션이 기본적으로 내장(Built-In) 되어 있다.</p><p>스프링프레임워크를 부트스트랩(Bootstrap) 하는 과정 중, 컨텍스트 설정을 읽어오는 부분이 있다. 이 코드를 따라 들어가다 보면 <code>MetaAnnotationUtils</code> 라는 클래스가 등장하는데 문서에 따르면 어노테이션을 찾거나 얻어올 뿐만 아니라 추가적인 기능도 지원한다고 한다.</p><p>이 유틸리티 클래스 중 <code>findAnnotationDescriptor</code> 메서드의 일부를 보면 아래와 같다.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span style=color:#ff79c6>for</span> <span style=color:#ff79c6>(</span>Annotation composedAnnotation <span style=color:#ff79c6>:</span> clazz<span style=color:#ff79c6>.</span><span style=color:#50fa7b>getDeclaredAnnotations</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>)</span> <span style=color:#ff79c6>{</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span>	<span style=color:#6272a4>// ...
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span style=color:#6272a4></span><span style=color:#ff79c6>}</span>
+</code></pre></div><p><code>clazz</code> 변수는 Class 타입이다. 이를 통해 추측할 수 있는 것은 자바의 리플렉션 기술을 통해 클래스에 선언 된 어노테이션을 읽어들일 수 있다는 것이다.</p><h3 id=예시>예시</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span>@Target<span style=color:#ff79c6>(</span>ElementType<span style=color:#ff79c6>.</span><span style=color:#50fa7b>TYPE</span><span style=color:#ff79c6>)</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>@Retention<span style=color:#ff79c6>(</span>RetentionPolicy<span style=color:#ff79c6>.</span><span style=color:#50fa7b>RUNTIME</span><span style=color:#ff79c6>)</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span style=color:#8be9fd;font-style:italic>public</span> @interface ClassPreamble <span style=color:#ff79c6>{</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span>    String <span style=color:#50fa7b>author</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>    String <span style=color:#50fa7b>date</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>    <span style=color:#8be9fd>int</span> <span style=color:#50fa7b>currentRevision</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span> <span style=color:#ff79c6>default</span> 1<span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span>    String <span style=color:#50fa7b>lastModified</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span> <span style=color:#ff79c6>default</span> <span style=color:#f1fa8c>&#34;N/A&#34;</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span>    String <span style=color:#50fa7b>lastModifiedBy</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span> <span style=color:#ff79c6>default</span> <span style=color:#f1fa8c>&#34;N/A&#34;</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span>    String<span style=color:#ff79c6>[</span><span style=color:#ff79c6>]</span> <span style=color:#50fa7b>reviewers</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span style=color:#ff79c6>}</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span style=color:#6272a4>////////////////////////////////
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span style=color:#6272a4></span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>@ClassPreamble<span style=color:#ff79c6>(</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>        author <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;Tester&#34;</span><span style=color:#ff79c6>,</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span>        date <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;2017/03/11&#34;</span><span style=color:#ff79c6>,</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>        reviewers <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>{</span><span style=color:#f1fa8c>&#34;John&#34;</span><span style=color:#ff79c6>,</span> <span style=color:#f1fa8c>&#34;Allen&#34;</span><span style=color:#ff79c6>}</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span style=color:#ff79c6>)</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span><span style=color:#8be9fd;font-style:italic>public</span> <span style=color:#8be9fd;font-style:italic>class</span> <span style=color:#50fa7b>CustomAnnotation</span> <span style=color:#ff79c6>{</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span>	<span style=color:#6272a4>// ...
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span><span style=color:#6272a4></span><span style=color:#ff79c6>}</span>
+</code></pre></div><p>위의 코드와 같이 커스텀 어노테이션을 정의하고 해당 어노테이션을 사용한 클래스가 있다고 했을 때, 다음과 같은 방법으로 어노테이션의 메타데이터를 읽어올 수 있다.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span>@Test
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span style=color:#8be9fd;font-style:italic>public</span> <span style=color:#8be9fd>void</span> <span style=color:#50fa7b>getMetadataTest</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span> <span style=color:#ff79c6>{</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span>    <span style=color:#6272a4>//given
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span style=color:#6272a4></span>    Class clazz <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>new</span> CustomAnnotation<span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>.</span><span style=color:#50fa7b>getClass</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>    Annotation annotation <span style=color:#ff79c6>=</span> clazz<span style=color:#ff79c6>.</span><span style=color:#50fa7b>getAnnotation</span><span style=color:#ff79c6>(</span>ClassPreamble<span style=color:#ff79c6>.</span><span style=color:#50fa7b>class</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span>    <span style=color:#6272a4>//when
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span style=color:#6272a4></span>    String result <span style=color:#ff79c6>=</span> annotation<span style=color:#ff79c6>.</span><span style=color:#50fa7b>toString</span><span style=color:#ff79c6>(</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span>    <span style=color:#6272a4>// @lang.annotation.ClassPreamble(currentRevision=1, lastModified=N/A, lastModifiedBy=N/A, author=Tester, date=2017/03/11, reviewers=[John, Allen])
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span style=color:#6272a4></span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span>    <span style=color:#6272a4>//then
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span style=color:#6272a4></span>    assertTrue<span style=color:#ff79c6>(</span>result<span style=color:#ff79c6>.</span><span style=color:#50fa7b>contains</span><span style=color:#ff79c6>(</span><span style=color:#f1fa8c>&#34;currentRevision=1&#34;</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span>    assertTrue<span style=color:#ff79c6>(</span>result<span style=color:#ff79c6>.</span><span style=color:#50fa7b>contains</span><span style=color:#ff79c6>(</span><span style=color:#f1fa8c>&#34;lastModified=N/A&#34;</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>    assertTrue<span style=color:#ff79c6>(</span>result<span style=color:#ff79c6>.</span><span style=color:#50fa7b>contains</span><span style=color:#ff79c6>(</span><span style=color:#f1fa8c>&#34;lastModifiedBy=N/A&#34;</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>    assertTrue<span style=color:#ff79c6>(</span>result<span style=color:#ff79c6>.</span><span style=color:#50fa7b>contains</span><span style=color:#ff79c6>(</span><span style=color:#f1fa8c>&#34;author=Tester&#34;</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span>    assertTrue<span style=color:#ff79c6>(</span>result<span style=color:#ff79c6>.</span><span style=color:#50fa7b>contains</span><span style=color:#ff79c6>(</span><span style=color:#f1fa8c>&#34;date=2017/03/11&#34;</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>    assertTrue<span style=color:#ff79c6>(</span>result<span style=color:#ff79c6>.</span><span style=color:#50fa7b>contains</span><span style=color:#ff79c6>(</span><span style=color:#f1fa8c>&#34;reviewers=[John, Allen]&#34;</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>)</span><span style=color:#ff79c6>;</span>
+<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span style=color:#ff79c6>}</span>
+</code></pre></div><h1 id=참고>참고</h1><ul><li><a href=https://docs.oracle.com/javase/tutorial/java/annotations>The Java™ Tutorials - Lesson : Annotations</a></li><li><a href=http://kang594.blog.me/39704853>Annotation과 Reflection, 그리고 코드 속의 MetaData</a></li></ul></div><div class=side style=position:fixed;right:50px;max-width:255px;overflow:auto;top:120px;width:220px;bottom:90px><div class=toc><div class=page-header><strong>Table of contents</strong></div><div id=page-scrollspy class=toc-nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%ec%9e%90%eb%b0%94%ec%9d%98-%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98>자바의 어노테이션</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98%ec%9d%98-%ed%98%95%ed%83%9c>어노테이션의 형태</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%eb%af%b8%eb%a6%ac-%ec%a0%95%ec%9d%98-%eb%90%9c-%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98%eb%93%a4>미리 정의 된 어노테이션들</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98-%ec%a7%81%ec%a0%91custom-%ec%a0%95%ec%9d%98>어노테이션 직접(Custom) 정의</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98%ea%b3%bc-%eb%a6%ac%ed%94%8c%eb%a0%89%ec%85%98>어노테이션과 리플렉션</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#javalangannotationannotation-%ec%9d%b8%ed%84%b0%ed%8e%98%ec%9d%b4%ec%8a%a4>java.lang.annotation.Annotation 인터페이스</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%ec%8a%a4%ed%94%84%eb%a7%81%ed%94%84%eb%a0%88%ec%9e%84%ec%9b%8c%ed%81%ac%ec%9d%98-%ec%bb%a4%ec%8a%a4%ed%85%80-%ec%96%b4%eb%85%b8%ed%85%8c%ec%9d%b4%ec%85%98>스프링프레임워크의 커스텀 어노테이션</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%ec%98%88%ec%8b%9c>예시</a></li></ul></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%ec%b0%b8%ea%b3%a0>참고</a></li></ul></div></div></div><script src=https://utteranc.es/client.js repo=iamkyu/iamkyu.github.io issue-term=title label=comment theme=github-light crossorigin=anonymous async></script></article></main><footer><div><div>&copy; 2020 Kyujin Nam. <a href=https://creativecommons.org/licenses/by/4.0/deed.ko>CC-BY-4.0</a><p>Powered by <a href=https://gohugo.io/>Hugo</a> with <a href=https://github.com/yanlinlin82/simple-style>Simple-Style</a></div></div></footer><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-87267111-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><a href=https://github.com/iamkyu/iamkyu.github.io class=github-corner aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513;color:#fff;position:absolute;top:0;border:0;right:0" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4L133.7 101.6C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media(max-width:800px){.github-corner{display:none}}</style></body></html>
